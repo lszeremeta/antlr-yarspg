@@ -102,7 +102,7 @@ primitive_value
            | DATETYPE
            | number
            | BOOL
-           | 'null'
+           | NULL
 complex_value
          ::= set
            | list
@@ -124,13 +124,13 @@ cardinality
          ::= min_cardinality max_cardinality?
            | max_cardinality
 min_cardinality
-         ::= 'MIN' card_num
+         ::= MIN card_num
 max_cardinality
-         ::= 'MAX' card_num
+         ::= MAX card_num
 card_num ::= UNSIGNED_INT
 value_schema
-         ::= primitive_value_schema ( 'UNIQUE' | 'NULL' )? 'OPTIONAL'? meta_prop_schema*
-           | complex_value_schema 'NULL'? 'OPTIONAL'? meta_prop_schema*
+         ::= primitive_value_schema ( UNIQUE | NULL )? OPTIONAL? meta_prop_schema*
+           | complex_value_schema NULL? OPTIONAL? meta_prop_schema*
 primitive_value_schema
          ::= 'Decimal'
            | 'SmallInt'
@@ -149,11 +149,11 @@ complex_value_schema
            | list_schema
            | struct_schema
 set_schema
-         ::= 'Set' '(' ( primitive_value_schema | set_schema ) 'NULL'? cardinality? ')' meta_prop_schema*
+         ::= 'Set' '(' ( primitive_value_schema | set_schema ) NULL? cardinality? ')' meta_prop_schema*
 list_schema
-         ::= 'List' '(' ( primitive_value_schema | list_schema ) 'NULL'? cardinality? ')' meta_prop_schema*
+         ::= 'List' '(' ( primitive_value_schema | list_schema ) NULL? cardinality? ')' meta_prop_schema*
 struct_schema
-         ::= 'Struct' '(' ( primitive_value_schema | struct_schema ) 'NULL'? cardinality? ')' meta_prop_schema*
+         ::= 'Struct' '(' ( primitive_value_schema | struct_schema ) NULL? cardinality? ')' meta_prop_schema*
 edge_schema
          ::= directed_schema
            | undirected_schema
@@ -167,6 +167,37 @@ number   ::= UNSIGNED_INT
            | SIGNED_INT
            | DECIMAL
            | DOUBLE
+A        ::= [aA]
+B        ::= [bB]
+C        ::= [cC]
+D        ::= [dD]
+E        ::= [eE]
+F        ::= [fF]
+G        ::= [gG]
+H        ::= [hH]
+I        ::= [iI]
+J        ::= [jJ]
+K        ::= [kK]
+L        ::= [lL]
+M        ::= [mM]
+N        ::= [nN]
+O        ::= [oO]
+P        ::= [pP]
+Q        ::= [qQ]
+R        ::= [rR]
+S        ::= [sS]
+T        ::= [tT]
+U        ::= [uU]
+V        ::= [vV]
+W        ::= [wW]
+X        ::= [xX]
+Y        ::= [yY]
+Z        ::= [zZ]
+OPTIONAL ::= O P T I O N A L
+NULL     ::= N U L L
+UNIQUE   ::= U N I Q U E
+MIN      ::= M I N
+MAX      ::= M A X
 SECTION_NAME
          ::= 'GRAPH'
            | 'METADATA'

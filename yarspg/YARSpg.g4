@@ -172,7 +172,7 @@ primitive_value
     | DATETYPE
     | number
     | BOOL
-    | 'null'
+    | NULL
     ;
 
 complex_value
@@ -219,11 +219,11 @@ cardinality
     ;
 
 min_cardinality
-    : 'MIN' card_num
+    : MIN card_num
     ;
 
 max_cardinality
-    : 'MAX' card_num
+    : MAX card_num
     ;
 
 card_num
@@ -231,8 +231,8 @@ card_num
     ;
 
 value_schema
-    : primitive_value_schema ('UNIQUE' | 'NULL')? 'OPTIONAL'?  meta_prop_schema*
-    | complex_value_schema 'NULL'? 'OPTIONAL'? meta_prop_schema*
+    : primitive_value_schema (UNIQUE | NULL)? OPTIONAL?  meta_prop_schema*
+    | complex_value_schema NULL? OPTIONAL? meta_prop_schema*
     ;
 
 primitive_value_schema
@@ -261,15 +261,15 @@ complex_value_schema
     ;
 
 set_schema
-    : 'Set' '(' (primitive_value_schema | set_schema) 'NULL'? cardinality? ')' meta_prop_schema*
+    : 'Set' '(' (primitive_value_schema | set_schema) NULL? cardinality? ')' meta_prop_schema*
     ;
 
 list_schema
-    : 'List' '(' (primitive_value_schema | list_schema) 'NULL'? cardinality? ')' meta_prop_schema*
+    : 'List' '(' (primitive_value_schema | list_schema) NULL? cardinality? ')' meta_prop_schema*
     ;
 
 struct_schema
-    : 'Struct' '(' (primitive_value_schema | struct_schema) 'NULL'? cardinality? ')' meta_prop_schema*
+    : 'Struct' '(' (primitive_value_schema | struct_schema) NULL? cardinality? ')' meta_prop_schema*
     ;
 
 edge_schema
@@ -294,6 +294,53 @@ number
     | SIGNED_INT
     | DECIMAL
     | DOUBLE
+    ;
+
+fragment A : [aA];
+fragment B : [bB];
+fragment C : [cC];
+fragment D : [dD];
+fragment E : [eE];
+fragment F : [fF];
+fragment G : [gG];
+fragment H : [hH];
+fragment I : [iI];
+fragment J : [jJ];
+fragment K : [kK];
+fragment L : [lL];
+fragment M : [mM];
+fragment N : [nN];
+fragment O : [oO];
+fragment P : [pP];
+fragment Q : [qQ];
+fragment R : [rR];
+fragment S : [sS];
+fragment T : [tT];
+fragment U : [uU];
+fragment V : [vV];
+fragment W : [wW];
+fragment X : [xX];
+fragment Y : [yY];
+fragment Z : [zZ];
+
+OPTIONAL
+    : O P T I O N A L
+    ;
+
+NULL
+    : N U L L
+    ;
+
+UNIQUE
+    : U N I Q U E
+    ;
+
+MIN
+    : M I N
+    ;
+
+MAX
+    : M A X
     ;
 
 SECTION_NAME
